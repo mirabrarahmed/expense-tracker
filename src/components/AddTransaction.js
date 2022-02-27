@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { GlobalContext } from '../context/GlobalState'
+import { v4 as uuidv4 } from 'uuid';
 
 export const AddTransaction = () => {
     const [text, setText] = useState('')
     const [amount, setAmount] = useState(0)
+
+    const {handleAdd} = useContext(GlobalContext)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const new_payment = {
+            id: uuidv4(),
+            name:text.charAt(0).toUpperCase() + text.slice(1),
+            amount:parseFloat(amount)
+        }
+
+        handleAdd(new_payment)
+    }
+
   return (
       <>
         <h3>Add New Transaction</h3>
-        <form action="">
+        <form onSubmit={handleSubmit}>
             <div className="form-control">
                 <label htmlFor="text">Text</label>
                 <input 
