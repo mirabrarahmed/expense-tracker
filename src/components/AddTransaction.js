@@ -30,10 +30,11 @@ export const AddTransaction = () => {
                     type="text" 
                     placeholder='Enter Text..' 
                     value={text} 
-                    onChange={(e) => setText(e.target.value)}/>
+                    onChange={(e) => setText(e.target.value)}
+                    required/>
             </div>
             <div className="form-control">
-                <label htmlFor="amount">Amount</label>
+                <label htmlFor="amount">Amount <br /> (Put "-" before amount in case of expense)</label>
                 <input 
                 type="number" 
                 placeholder='Enter Amount..' 
